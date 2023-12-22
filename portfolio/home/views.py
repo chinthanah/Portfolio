@@ -8,14 +8,15 @@ def About(request):
     return render(request,'about.html')
 def Projects(request):
     return render(request,'projects.html')
-def Contact(request):
+def contact_view(request):
     if request.method=="POST":
         print("posted successfully")
         name=request.POST['name']
         email=request.POST['email']
         phone=request.POST['phone']
-        textarea=request.POST['textarea']
-        print(name,email,phone,textarea)
-        ins=Contact(name=name,email=email,phone=phone,textarea=textarea)
-        ins.save()
+        desc=request.POST['desc']
+        print(name,email,phone,desc)
+        contact=Contact(name=name,email=email,phone=phone,desc=desc)
+        contact.save()
+        print("data has been written")
     return render(request,'contact.html')       
